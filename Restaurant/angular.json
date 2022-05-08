@@ -24,13 +24,21 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets/images"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/responsive.css",
+              "src/assets/css/style.css",
+              "src/assets/css/style.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/bootstrap.js",
+              "src/assets/js/custom.js",
+              "src/assets/js/jquery-3.4.1.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -96,8 +104,11 @@
             ],
             "styles": [
               "src/styles.css"
+
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           }
         }
       }
