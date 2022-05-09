@@ -11,6 +11,10 @@ import { ClientsComponent } from './users/clients/clients.component';
 import { BookComponent } from './users/book/book.component';
 import { AboutComponent } from './users/about/about.component';
 import { FoodComponent } from './users/food/food.component';
+import { HomeGuestComponent } from './users/home-guest/home-guest.component';
+import { SignUpComponent } from './users/sign-up/sign-up.component';
+import { SliderComponent } from './users/slider/slider.component';
+import { LoginComponent } from './users/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { FoodComponent } from './users/food/food.component';
     ClientsComponent,
     BookComponent,
     AboutComponent,
-    FoodComponent 
+    FoodComponent,
+    HomeGuestComponent,
+    SignUpComponent,
+    SliderComponent,
+    LoginComponent 
   ],
   imports: [
     BrowserModule,
