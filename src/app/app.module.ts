@@ -26,6 +26,8 @@ import { CustomersComponent } from './admin/customers/customers.component';
 import { ProvidersComponent } from './admin/providers/providers.component';
 import { SaleDetailsComponent } from './admin/sales/sale-details/sale-details.component';
 import { CategoryesComponent } from './admin/categoryes/categoryes.component';
+import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
+import { FooterAdminComponent } from './admin/footer-admin/footer-admin.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { CategoryesComponent } from './admin/categoryes/categoryes.component';
     CustomersComponent,
     ProvidersComponent,
     SaleDetailsComponent,
-    CategoryesComponent 
+    CategoryesComponent,
+    NavbarAdminComponent,
+    FooterAdminComponent 
   ],
   imports: [
     BrowserModule,

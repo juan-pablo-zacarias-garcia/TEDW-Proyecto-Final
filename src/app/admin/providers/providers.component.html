@@ -1,69 +1,5 @@
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" style="color: white;">Administrator</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-        
-            <div class="collapse navbar-collapse" id="navbarColor01">
-              <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                  <a class="nav-link active" href="/admin">Home
-                    <span class="visually-hidden">(current)</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/products">Productos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/customers">Clientes</a>
-                  </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/employees">Empleados</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/providers">Proveedores</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categoryes">Cateogorias</a>
-                  </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/sales">Ventas</a>
-                </li>
-              </ul>
-              <form class="d-flex">
-                <input class="form-control me-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </div>
-          </div>
-        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fasfa-bars"></i></button>
-        <!-- Navbar Search-->
-        <form class="d-none md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input class="form-control" type="text" placeholder="search for ..." aria-label="Search" aria-describedby="basic-addon2"/>
-                <div class="input-group-append">
-                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </form>
-    
-        <!--Navbar-->
-        <ul class="navbar-nav ml-auto ml-md-0">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="userDropdwn" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="assets/images/avatarAdmin.png" style="border-radius: 40%" width="40px">
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="index.html">Settings</a>
-                    <a class="dropdown-item" href="index.html">Activity Log</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="index.html" routerLink="/login" routerLinkActive="active">Logout</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
+    <app-navbar-admin></app-navbar-admin>
 
     <div class="container">
       <div class="heading_container heading_center psudo_white_primary mb_45" style="margin-top: 25px;">
@@ -72,12 +8,24 @@
         </h2>
       </div>
     </div>
-    <div class="heading_container heading_center psudo_white_primary mb_45"  style="margin-top: 25px;">
-        <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src="assets/images/add.png" style="border-radius: 28%" width="28px">
-        </a>
-        Add Provider
-    </div>
+    <div class="row">
+      <div class="heading_container heading_center psudo_white_primary mb_45"  style="margin-top: 25px;">
+          <h5>Add Provider</h5>
+          <form action="" method="POST">
+              <div class="input-group" style="margin-top: 10px;">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                  <input type="text" class="form-control" id="residence" name="residence" placeholder="Residence"  style="margin-left: 15px;">
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Email" style="margin-left: 15px;">
+                  <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone" style="margin-left: 15px;">
+                  <input type="text" class="form-control" id="rfc" name="rfc" placeholder="RFC" style="margin-left: 15px;">
+                  <input type="date" class="form-control" id="date of admission" name="date of admission" placeholder="Date of Admission" style="margin-left: 15px;">
+              </div>
+                  <a type="submit" href="index.html" routerLink="/add_category" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img src="assets/images/add.png" style="border-radius: 30%; margin-top: 10px;" width="30px">
+                  </a>
+          </form>
+      </div>
+  </div>
 
     <div class="col-md-12">
       <div class="container">
@@ -119,3 +67,4 @@
         </table>
       </div>
     </div>
+  </body>
