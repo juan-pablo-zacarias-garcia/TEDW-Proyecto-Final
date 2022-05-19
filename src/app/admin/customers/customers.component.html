@@ -1,0 +1,48 @@
+<body class="sb-nav-fixed">
+    <app-navbar-admin></app-navbar-admin>
+    <div class="container">
+      <div class="heading_container heading_center psudo_white_primary mb_45" style="margin-top: 25px;">
+        <h2>
+          Clientes
+        </h2>
+      </div>
+    </div>
+      <div class="col-md-12">
+          <table class="table table-hover" style="margin-top: 25px;">
+            <thead>
+              <tr style="text-align: center;">
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Age</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Residence</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody style="text-align: center;">
+              <tr class="table-active">
+                <th scope="row">17030214@itcelaya.edu.mx</th>
+                <td editable-td>123456789</td>
+                <td>Andres Garcia Lazaro</td>
+                <td>Masculino</td>
+                <td>22</td>
+                <td>413-165-6852</td>
+                <td>Celaya</td>
+                <td>
+                  <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="assets/images/edit.png" style="border-radius: 28%" width="28px">
+                  </a>
+                </td>
+                <td>
+                  <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="assets/images/delete.png" style="border-radius: 26%" width="26px">
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </body>

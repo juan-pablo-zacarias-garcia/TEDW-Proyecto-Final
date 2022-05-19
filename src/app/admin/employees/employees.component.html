@@ -1,0 +1,84 @@
+<body class="sb-nav-fixed">
+    <app-navbar-admin></app-navbar-admin>
+
+    <div class="container">
+      <div class="heading_container heading_center psudo_white_primary mb_45" style="margin-top: 25px;">
+        <h2>
+          Empleados
+        </h2>
+      </div>
+      <div class="row">
+        <div class="heading_container heading_center psudo_white_primary mb_45"  style="margin-top: 25px;">
+            <h5>Add Employee</h5>
+            <form action="" method="POST">
+                <div class="input-group" style="margin-top: 10px;">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" style="margin-left: 15px;">
+                    <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender" style="margin-left: 15px;">
+                    <input type="number" class="form-control" id="age" name="age" placeholder="Age" style="margin-left: 15px;">
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone" style="margin-left: 15px;">
+                    <input type="text" class="form-control" id="residence" name="residence" placeholder="Residence"  style="margin-left: 15px;">
+                </div>
+                <div class="input-group" style="margin-top: 10px;">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" style="margin-left: 15px;">
+                    <input type="date" class="form-control" id="date of admission" name="date of admission" placeholder="Date of Admission" style="margin-left: 15px;">
+                    <select class="form-control" id="area" name="area" placeholder="Area" style="margin-left: 15px;">
+                      <option>Barra</option>
+                      <option>Cocina</option>
+                    </select>
+                    <input type="text" class="form-control" id="position" name="position" placeholder="Position" style="margin-left: 15px;">
+                    <input type="number" class="form-control" id="salary" name="salary" placeholder="Salary" style="margin-left: 15px;">
+                </div>
+                    <a type="submit" href="index.html" routerLink="/add_category" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="assets/images/add.png" style="border-radius: 30%; margin-top: 10px;" width="30px">
+                    </a>
+            </form>
+        </div>
+    </div>
+    </div>
+      <div class="col-md-12" style="margin-top: 40px;">
+          <table class="table table-hover">
+            <thead>
+              <tr style="text-align: center;">
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Age</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Residence</th>
+                <th scope="col">Email</th>
+                <th scope="col">Date of admission</th>
+                <th scope="col">Area</th>
+                <th scope="col">Position</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody style="text-align: center;">
+              <tr class="table-active">
+                <th scope="row">1</th>
+                <td>Oscar Daniel Garcia Lazaro</td>
+                <td>Masculino</td>
+                <td>25</td>
+                <td>413-165-2426</td>
+                <td>Apaseo el Grande</td>
+                <td>daniel_cim123@outlook.com</td>
+                <td>07-09-2015</td>
+                <td>Systems</td>
+                <td>Ing. Systems</td>
+                <td>$35,000</td>
+                <td>
+                  <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="assets/images/edit.png" style="border-radius: 28%" width="28px">
+                  </a>
+                </td>
+                <td>
+                  <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="assets/images/delete.png" style="border-radius: 26%" width="26px">
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </body>

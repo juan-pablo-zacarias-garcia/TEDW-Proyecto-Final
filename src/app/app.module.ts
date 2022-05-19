@@ -15,6 +15,19 @@ import { HomeGuestComponent } from './users/home-guest/home-guest.component';
 import { SignUpComponent } from './users/sign-up/sign-up.component';
 import { SliderComponent } from './users/slider/slider.component';
 import { LoginComponent } from './users/login/login.component';
+import { ToggleComponent } from './toggle/toggle.component';
+import { RoutesComponent } from './routes/routes.component';
+import { ChartsComponent } from './routes/charts/charts.component';
+import { AdminComponent } from './admin/admin.component';
+import { ProductsComponent } from './admin/products/products.component';
+import { EmployeesComponent } from './admin/employees/employees.component';
+import { SalesComponent } from './admin/sales/sales.component';
+import { CustomersComponent } from './admin/customers/customers.component';
+import { ProvidersComponent } from './admin/providers/providers.component';
+import { SaleDetailsComponent } from './admin/sales/sale-details/sale-details.component';
+import { CategoryesComponent } from './admin/categoryes/categoryes.component';
+import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
+import { FooterAdminComponent } from './admin/footer-admin/footer-admin.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +42,20 @@ import { LoginComponent } from './users/login/login.component';
     HomeGuestComponent,
     SignUpComponent,
     SliderComponent,
-    LoginComponent 
+    LoginComponent,
+    ToggleComponent,
+    RoutesComponent,
+    ChartsComponent,
+    AdminComponent,
+    ProductsComponent,
+    EmployeesComponent,
+    SalesComponent,
+    CustomersComponent,
+    ProvidersComponent,
+    SaleDetailsComponent,
+    CategoryesComponent,
+    NavbarAdminComponent,
+    FooterAdminComponent 
   ],
   imports: [
     BrowserModule,

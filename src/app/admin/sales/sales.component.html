@@ -1,0 +1,54 @@
+<body class="sb-nav-fixed">
+    <app-navbar-admin></app-navbar-admin>
+    <div class="container">
+      <div class="heading_container heading_center psudo_white_primary mb_45" style="margin-top: 25px;">
+        <h2>
+          Ordenes de Venta
+        </h2>
+      </div>
+    </div>
+    <!--<div class="heading_container heading_center psudo_white_primary mb_45"  style="margin-top: 25px;">
+        <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="assets/images/add.png" style="border-radius: 28%" width="28px">
+        </a>
+        Add new sale
+    </div>-->
+      <div class="col-md-12" style="margin-top: 25px;">
+        <div class="container">
+          <table class="table table-hover">
+            <thead>
+              <tr style="text-align: center;">
+                <th scope="col">Id Orden</th>
+                <th scope="col">Date</th>
+                <th scope="col">Hour</th>
+                <th scope="col">Total</th>
+                <th scope="col">Customer Email</th>
+                <th scope="col">Payment Type</th>
+                <th scope="col">Bill</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody style="text-align: center;">
+              <tr class="table-active">
+                <th scope="row">1</th>
+                <td>15-05-2022</td>
+                <td>18:35</td>
+                <td>$1,675</td>
+                <td>17030214@itcelaya.edu.mx</td>
+                <td>Transferencia</td>
+                <td>
+                  <a href="/sale-details" routerLink="/sale-details" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="assets/images/details.png" width="28px">
+                  </a>
+                </td>
+                <td>
+                  <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="assets/images/delete.png" style="border-radius: 26%" width="26px">
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>

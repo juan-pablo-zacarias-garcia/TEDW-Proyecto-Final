@@ -1,0 +1,70 @@
+<body class="sb-nav-fixed">
+    <app-navbar-admin></app-navbar-admin>
+
+    <div class="container">
+      <div class="heading_container heading_center psudo_white_primary mb_45" style="margin-top: 25px;">
+        <h2>
+          Proveedores
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="heading_container heading_center psudo_white_primary mb_45"  style="margin-top: 25px;">
+          <h5>Add Provider</h5>
+          <form action="" method="POST">
+              <div class="input-group" style="margin-top: 10px;">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                  <input type="text" class="form-control" id="residence" name="residence" placeholder="Residence"  style="margin-left: 15px;">
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Email" style="margin-left: 15px;">
+                  <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone" style="margin-left: 15px;">
+                  <input type="text" class="form-control" id="rfc" name="rfc" placeholder="RFC" style="margin-left: 15px;">
+                  <input type="date" class="form-control" id="date of admission" name="date of admission" placeholder="Date of Admission" style="margin-left: 15px;">
+              </div>
+                  <a type="submit" href="index.html" routerLink="/add_category" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img src="assets/images/add.png" style="border-radius: 30%; margin-top: 10px;" width="30px">
+                  </a>
+          </form>
+      </div>
+  </div>
+
+    <div class="col-md-12">
+      <div class="container">
+        <table class="table table-hover">
+          <thead>
+            <tr style="text-align: center;">
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Residence</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">RFC</th>
+              <th scope="col">Date of admission</th>
+              <th scope="col">Update</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody style="text-align: center;">
+            <tr class="table-active">
+              <th scope="row">1</th>
+              <td>Grupo Modelo</td>
+              <td>Celaya, Gto.</td>
+              <td>grupomodelo@modelo.com</td>
+              <td>123456789</td>
+              <td>MODELO1234567</td>
+              <td>08-11-2011</td>
+              <td>
+                <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="assets/images/edit.png" style="border-radius: 28%" width="28px">
+                </a>
+              </td>
+              <td>
+                <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="assets/images/delete.png" style="border-radius: 26%" width="26px">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>

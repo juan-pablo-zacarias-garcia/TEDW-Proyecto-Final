@@ -1,0 +1,94 @@
+<body class="sb-nav-fixed">
+    <app-navbar-admin></app-navbar-admin>
+    
+    <div id="layoutSidenav">
+    
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card-mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-area mr-1"></i>
+                    Weekly Analysis
+                </div>
+                <div class="card-body">
+                    <img src="assets/images/Barchart.png" width="100%" height="280">
+                    <!--<canvas id="line-chart" width="800" height="450"></canvas>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card-mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-area mr-1"></i>
+                    Monthly Report
+                </div>
+                <div class="card-body">
+                    <img src="assets/images/Areachart.png" width="100%" height="280">
+                    <!--<canvas id="doughnut-chart" width="800" height="450"></canvas>-->
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="card-mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-area mr-1"></i>
+                    Employee Data
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-boardered" id="datatable" width="100%" cellspacing="0">
+                            <thead style="text-align: center;">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Area</th>
+                                    <th>Age</th>
+                                    <th>Date of Admission</th>
+                                    <th>Salary</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: center;">
+                                <tr>
+                                    <td>Daniel Garcia</td>
+                                    <td>Ing. Systems Computer</td>
+                                    <td>Systems</td>
+                                    <td>25</td>
+                                    <td>2011/04/05</td>
+                                    <td>$35,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Andy Gomez</td>
+                                    <td>Lic. E-commerce</td>
+                                    <td>Aliments</td>
+                                    <td>22</td>
+                                    <td>2015/10/15</td>
+                                    <td>$40,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Leonardo Garcia</td>
+                                    <td>Chef</td>
+                                    <td>Kitchen Room</td>
+                                    <td>30</td>
+                                    <td>2020/09/14</td>
+                                    <td>$28,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    <app-footer-admin></app-footer-admin>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/js/line-chart.js"></script>
+    <script src="src/assets/js/doughnut-chart.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="src/assets/js/datatables-demo.js"></script>
+    
+    
+    </body>
