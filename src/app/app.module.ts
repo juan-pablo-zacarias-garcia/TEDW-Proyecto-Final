@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './users/navbar/navbar.component';
 import { FooterComponent } from './users/footer/footer.component';
 import { OfferComponent } from './users/offer/offer.component';
@@ -60,7 +61,8 @@ import { FooterAdminComponent } from './admin/footer-admin/footer-admin.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

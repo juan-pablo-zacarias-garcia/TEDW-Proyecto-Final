@@ -14,48 +14,58 @@
             <h5>Add Category</h5>
             <form action="" method="POST">
                 <div class="input-group" style="margin-top: 10px;">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Description"  style="margin-left: 25px;">
-                    <input type="text" class="form-control" id="image" name="image" placeholder="Image"   style="margin-left: 25px;">
+                    <input required type="text" class="form-control" id="nombre" [(ngModel)]='nueva_categoria.nombre' name="name" placeholder="Name">
+                    <input required type="text" class="form-control" id="descripcion" [(ngModel)]='nueva_categoria.descripcion' name="description" placeholder="Description"  style="margin-left: 25px;">
+                    <input required type="text" class="form-control" id="imagen" [(ngModel)]='nueva_categoria.imagen' name="image" placeholder="Image"   style="margin-left: 25px;">
                 </div>
-                    <a type="submit" href="index.html" routerLink="/add_category" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="assets/images/add.png" style="border-radius: 30%; margin-top: 10px;" width="30px">
-                    </a>
+                <div id="btns_categoria">
+                  <button (click)="addCategoria()" type="submit" id="btn_add" class="btn btn-success m-4" >
+                    <i class="bi bi-plus" > Add category</i>
+                  </button>
+                  <button (click)="updateCategoria(nueva_categoria)" type="submit" id="btn_update" class="btn btn-success m-4" >
+                    <i class="bi bi-plus" > Update category</i>
+                  </button>
+                </div>
             </form>
         </div>
     </div>
-    
-    <section class="food_section layout_padding-bottom" id="section_food" style="margin-top: 60px;">
+    <div class="col-md-12" style="margin-top: 40px;">
         <div class="container">
-            <div class="filters-content">
-                <div class="row grid">
-                <div class="col-sm-6 col-lg-4 all pizza">
-                    <div class="box">
-                    <div>
-                        <div class="img-box">
-                        <img src="assets/images/vegetables.png" alt="">
-                        </div>
-                        <div class="detail-box">
-                        <h5>
-                            Vegetables
-                        </h5>
-                        <p>
-                            En esta categoria se encuentran todos los productos que se consideran vegetales...!
-                        </p>
-                        <div>
-                            <a href="index.html" routerLink="/update_category" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="assets/images/edit2.png" style="border-radius: 28%; margin-left: 10%;" width="28px">
-                              </a>
-                              <a href="index.html" routerLink="/delete_category" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="assets/images/delete.png" style="border-radius: 28%; margin-left: 60%;" width="28px">
-                              </a>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
+          <table class="table table-hover" id="tbl_categorias">
+            <thead>
+              <tr style="text-align: center;">
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody style="text-align: center;" *ngFor="let categoria of categorias_disponibles">
+                <script>$(".table").DataTable();</script>
+              <tr class="table-active" >
+                <th scope="row">{{categoria.id_categoria}}</th>
+                <td>{{categoria.nombre}}</td>
+                <td>{{categoria.descripcion}}</td>
+                <td>
+                    <div class="img-box">
+                        <img src={{categoria.imagen}} alt={{categoria.nombre}} width="25%">
+                      </div>
+                </td>
+                <td>
+                    <button class="btn btn-outline-success me-2" (click)="selectCategoria(categoria)">
+                        <i class="bi-pencil"></i>
+                  </button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger me-2" (click)="deleteCategoria(categoria)">
+                        <i class="bi-trash-fill"></i>
+                      </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-    </section>
+      </div>
 </body>

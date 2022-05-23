@@ -32,7 +32,8 @@
               "src/assets/css/bootstrap.css",
               "src/assets/css/responsive.css",
               "src/assets/css/style.css",
-              "src/assets/css/style.scss"
+              "src/assets/css/style.scss",
+              "src/assets/css/datatables.min.css"
             ],
             "scripts": [
               "src/assets/js/jquery-3.4.1.min.js",
@@ -40,11 +41,8 @@
               "src/assets/js/owl.carousel.min.js",
               "src/assets/js/isotope.pkgd.min.js",
               "src/assets/js/jquery.nice-select.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "src/assets/js/line-chart.js",
-              "src/assets/js/doughnut-chart.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+              "src/assets/js/datatables.min.js",
+              "src/assets/js/custom.js"
             ]
           },
           "configurations": {

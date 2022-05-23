@@ -1,16 +1,20 @@
-// to get current year
-function getYear() {
-    var currentDate = new Date();
-    var currentYear = currentDate.getFullYear();
-    document.querySelector("#displayYear").innerHTML = currentYear;
-}
-
-getYear();
-
+$( document ).ready(function() {
+    console.log( "document loaded" );
+    $('select').niceSelect();
+});
 
 // isotope js
-window.onload =function () {
-    $('.filters_menu li').on(function () {
+window.onload= function () {
+    console.log("Window loaded");
+    var $grid = $(".grid").isotope({
+        itemSelector: ".all",
+        percentPosition: false,
+        masonry: {
+            columnWidth: ".all"
+        }
+    });
+    
+    $('.filters_menu li').click(function () {
         $('.filters_menu li').removeClass('active');
         $(this).addClass('active');
 
@@ -19,15 +23,15 @@ window.onload =function () {
             filter: data
         })
     });
-
-    var $grid = $(".grid").isotope({
-        itemSelector: ".all",
-        percentPosition: false,
-        masonry: {
-            columnWidth: ".all"
+    $("#tbl_categorias").change(
+        function (){
+            $("#tbl_categorias").DataTable();
         }
-    })
+    );
 };
+
+
+
 // client section owl carousel
 $(".client_owl-carousel").owlCarousel({
     loop: true,
@@ -53,19 +57,3 @@ $(".client_owl-carousel").owlCarousel({
         }
     }
 });
-
-
-// nice select
-document.on = function() {
-    $('select').niceSelect();
-  };
-
-/** google_map js **/
-function myMap() {
-    var mapProp = {
-        center: new google.maps.LatLng(40.712775, -74.005973),
-        zoom: 18,
-    };
-    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-}
-
