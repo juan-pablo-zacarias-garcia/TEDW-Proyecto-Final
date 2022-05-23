@@ -62,12 +62,7 @@ export class CategoryesComponent implements OnInit {
     });
   }
   selectCategoria(categoria:Interface_Categoria){
-        //oculta boton de nuevo
-        var btn_add = document.getElementById("btn_add");
-        btn_add?.setAttribute("hidden","");
-        //mostrar boton de actualizar
-        var btn_update = document.getElementById("btn_update");
-        btn_update?.removeAttribute("hidden");
+    this.muestraBtnUpdate();
         this.nueva_categoria.id_categoria=categoria.id_categoria;
         this.nueva_categoria.nombre=categoria.nombre;
         this.nueva_categoria.descripcion=categoria.descripcion;
@@ -78,11 +73,7 @@ export class CategoryesComponent implements OnInit {
       if(data){
         alert("Categoria actualizada: "+categoria.nombre);
         this.actualizaCategorias();
-        //oculta el boton de actualizar y muestra el de agregar
-        var btn_add = document.getElementById("btn_add");
-        btn_add?.removeAttribute("hidden");
-        var btn_update = document.getElementById("btn_update");
-        btn_update?.setAttribute("hidden","");
+        this.muestraBtnAdd();
       }
       else{
         alert("Error al actualizar los datos");
@@ -102,17 +93,31 @@ export class CategoryesComponent implements OnInit {
     }
 
   }
+  muestraBtnAdd(){
+    //oculta el boton de actualizar y muestra el de agregar
+    var btn_add = document.getElementById("btn_add");
+    btn_add?.removeAttribute("hidden");
+    var btn_update = document.getElementById("btn_update");
+    btn_update?.setAttribute("hidden","");
+  }
+  muestraBtnUpdate(){
+    //oculta boton de nuevo
+    var btn_add = document.getElementById("btn_add");
+    btn_add?.setAttribute("hidden","");
+    //mostrar boton de actualizar
+    var btn_update = document.getElementById("btn_update");
+    btn_update?.removeAttribute("hidden");
+  }
 
 }
 
 function generaId() {
   let result = '';
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const characters = '0123456789';
   const charactersLength = characters.length;
   for (let i = 0; i < 5; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
-
   return result;
 }
 

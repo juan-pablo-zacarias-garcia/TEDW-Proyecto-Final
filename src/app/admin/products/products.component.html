@@ -13,25 +13,28 @@
           <h5>Add Product</h5>
           <form action="" method="POST">
               <div class="input-group" style="margin-top: 10px;">
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Name" style="margin-left: 15px;">
-                  <input type="text" class="form-control" id="description" name="description" placeholder="Description" style="margin-left: 15px;">
+                  <input type="text" class="form-control" id="name" [(ngModel)]='nuevo_producto.nombre' name="name" placeholder="Name" style="margin-left: 15px;">
+                  <input type="text" class="form-control" id="description" [(ngModel)]='nuevo_producto.descripcion' name="description" placeholder="Description" style="margin-left: 15px;">
                   <input type="number" class="form-control" id="stock" name="stock" placeholder="Stock" style="margin-left: 15px;">
                   <input type="number" class="form-control" id="purchase-price" name="purchase-price" placeholder="Purchase-Price" style="margin-left: 15px;">
                 </div>
               <div class="input-group" style="margin-top: 10px;">
                   <input type="number" class="form-control" id="sale-price" name="sale-price" placeholder="Sale-Price" style="margin-left: 15px;">
-                  <select class="form-control" id="area" name="area" placeholder="Area" style="margin-left: 15px;">
-                    <option>Barra</option>
-                    <option>Cocina</option>
-                  </select>
-                  <select class="form-control" id="category" name="category" placeholder="Category" style="margin-left: 15px;">
-                    <option>Vegetales</option>
-                    <option>Carnes</option>
+                  <select id="categoria"  class="form form-select" (change)="selectCategoria('nada')">
+                      <option *ngFor="let categoria of categorias" value={{categoria.id_categoria}}>{{categoria.nombre}}</option>
                   </select>
               </div>
-                  <a type="submit" href="index.html" routerLink="/add_category" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <img src="assets/images/add.png" style="border-radius: 30%; margin-top: 10px;" width="30px">
-                  </a>
+              <div id="btns_categoria">
+                <button  type="submit" (click)="addProducto(nuevo_producto)" id="btn_add" class="btn btn-success m-4" >
+                  <i class="bi bi-plus" > Add category</i>
+                </button>
+                <button  type="submit" id="btn_update" class="btn btn-success m-4" >
+                  <i class="bi bi-plus" > Update category</i>
+                </button>
+                <button  type="submit" (click)="actualizaProductos()" id="btn_cancel" class="btn btn-danger m-4" >
+                  <i class="bi bi-plus" > Cancel</i>
+                </button>
+              </div>
           </form>
       </div>
   </div>
@@ -44,34 +47,30 @@
               <th scope="col">Id</th>
               <th scope="col">Name</th>
               <th scope="col">Description</th>
-              <th scope="col">Stock</th>
-              <th scope="col">Purchase-Price</th>
-              <th scope="col">Sale-Price</th>
-              <th scope="col">Area</th>
+              <th scope="col">Image</th>
               <th scope="col">Category</th>
+              <th scope="col">Sale-Price</th>
               <th scope="col">Update</th>
               <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody style="text-align: center;">
-            <tr class="table-active">
-              <th scope="row">1</th>
-              <td>Hamburguesa</td>
-              <td>Hamburguesa sencilla carne de res</td>
-              <td>80</td>
-              <td>25.5</td>
-              <td>60</td>
-              <td>Cocina</td>
-              <td>Carnes</td>
+            <tr class="table-active" *ngFor="let producto of productos_disponibles">
+              <th scope="row">{{producto.id_producto}}</th>
+              <td>{{producto.nombre}}</td>
+              <td>{{producto.descripcion}}</td>
+              <td>{{producto.imagen}}</td>
+              <td>{{producto.id_categoria}}</td>
+              <td>{{producto.costo}}</td>
               <td>
-                <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="assets/images/edit.png" style="border-radius: 28%" width="28px">
-                </a>
+                <button class="btn btn-outline-success me-2">
+                  <i class="bi-pencil"></i>
+                </button>
               </td>
               <td>
-                <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="assets/images/delete.png" style="border-radius: 26%" width="26px">
-                </a>
+                <button class="btn btn-outline-danger me-2">
+                  <i class="bi-trash-fill"></i>
+                </button>
               </td>
             </tr>
           </tbody>

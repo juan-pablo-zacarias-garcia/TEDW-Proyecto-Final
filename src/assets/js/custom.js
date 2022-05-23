@@ -1,6 +1,5 @@
 $( document ).ready(function() {
     console.log( "document loaded" );
-    $('select').niceSelect();
 });
 
 // isotope js
@@ -23,11 +22,6 @@ window.onload= function () {
             filter: data
         })
     });
-    $("#tbl_categorias").change(
-        function (){
-            $("#tbl_categorias").DataTable();
-        }
-    );
 };
 
 

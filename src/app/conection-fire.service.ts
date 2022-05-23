@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 //importamos las interfaces
 import { Interface_Usuarios } from './interfaces/int_usuario';
-import { Interface_Platillo } from './interfaces/int_platillo';
-
 import { initializeApp } from 'firebase/app';
 import { environment } from '../environments/environment';
 import { doc,getFirestore, collection, getDocs, addDoc, deleteDoc, query, where, setDoc} from 'firebase/firestore/lite';
 import { getStorage, ref } from "firebase/storage";
 import { Interface_Categoria } from './interfaces/int_categoria';
+import { Interface_Producto } from './interfaces/int_pruducto';
 
 
 @Injectable({
@@ -128,5 +127,57 @@ export class ConectionFireService {
       return false;
     } 
   }
+
+  //seccion de productos
+ 
+  async  getProductos(){
+  const productos = collection(this.db, 'productos');
+  const productosSnapshot = await getDocs(productos);
+  const productosList = productosSnapshot.docs.map( doc=>doc.data()) as Interface_Producto[];
+  return productosList;
+  }
+
+  async getProducto(id_producto:String){
+    const coleccion = collection(this.db, '/productos');
+    const q = query(coleccion, where("id_producto", "==", id_producto));
+    const querySnapshot = await getDocs(q);
+    if(querySnapshot){
+      return <Interface_Producto>querySnapshot.docs[0].data();
+    }
+    else{
+      return null;
+    }    
+  }
+  async addProducto( producto:Interface_Producto ){
+    try {
+      const docRef = await addDoc(collection(this.db, "productos"), producto);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  async updateProducto(producto:Interface_Producto){
+    try{
+      const coleccion = collection(this.db, '/productos');
+      const q = query(coleccion, where("id_producto", "==", producto.id_producto));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await setDoc(referencia, producto);
+      return true;
+
+    }catch(e){
+      return null;
+    }
+  }
+  async deleteProducto(id_producto:String){
+    try{
+      const coleccion = collection(this.db, '/producto');
+      const q = query(coleccion, where("id_producto", "==", id_producto));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await deleteDoc(referencia);
+      return true;
+    }catch(e){
+      return false;
+    } 
+  } 
   
 }
