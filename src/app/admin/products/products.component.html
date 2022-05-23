@@ -15,21 +15,22 @@
               <div class="input-group" style="margin-top: 10px;">
                   <input type="text" class="form-control" id="name" [(ngModel)]='nuevo_producto.nombre' name="name" placeholder="Name" style="margin-left: 15px;">
                   <input type="text" class="form-control" id="description" [(ngModel)]='nuevo_producto.descripcion' name="description" placeholder="Description" style="margin-left: 15px;">
-                  <input type="number" class="form-control" id="stock" name="stock" placeholder="Stock" style="margin-left: 15px;">
-                  <input type="number" class="form-control" id="purchase-price" name="purchase-price" placeholder="Purchase-Price" style="margin-left: 15px;">
+                  <input type="text" class="form-control" id="image" [(ngModel)]='nuevo_producto.imagen' name="image" placeholder="Url Image" style="margin-left: 15px;">
+                  <input type="number" class="form-control" id="stock" [(ngModel)]='nuevo_producto.cantidad' name="stock" placeholder="Stock" style="margin-left: 15px;">
                 </div>
               <div class="input-group" style="margin-top: 10px;">
-                  <input type="number" class="form-control" id="sale-price" name="sale-price" placeholder="Sale-Price" style="margin-left: 15px;">
-                  <select id="categoria"  class="form form-select" (change)="selectCategoria('nada')">
-                      <option *ngFor="let categoria of categorias" value={{categoria.id_categoria}}>{{categoria.nombre}}</option>
+                  <input type="number" min="0" class="form-control" id="sale-price" [(ngModel)]='nuevo_producto.costo' name="sale-price" placeholder="Sale-Price" style="margin-left: 15px;">
+                  <select id="categoria"  class="form form-select" (change)="selectCategoria($event)">
+                      <option value="null">-</option>
+                      <option *ngFor="let categoria of categorias" value={{categoria.id_categoria}} >({{categoria.id_categoria}}) {{categoria.nombre}}</option>
                   </select>
               </div>
               <div id="btns_categoria">
                 <button  type="submit" (click)="addProducto(nuevo_producto)" id="btn_add" class="btn btn-success m-4" >
-                  <i class="bi bi-plus" > Add category</i>
+                  <i class="bi bi-plus" > Add product</i>
                 </button>
-                <button  type="submit" id="btn_update" class="btn btn-success m-4" >
-                  <i class="bi bi-plus" > Update category</i>
+                <button  type="submit" (click)="updateProducto(nuevo_producto)" id="btn_update" class="btn btn-success m-4" >
+                  <i class="bi bi-plus" > Update product</i>
                 </button>
                 <button  type="submit" (click)="actualizaProductos()" id="btn_cancel" class="btn btn-danger m-4" >
                   <i class="bi bi-plus" > Cancel</i>
@@ -49,6 +50,7 @@
               <th scope="col">Description</th>
               <th scope="col">Image</th>
               <th scope="col">Category</th>
+              <th scope="col">Stock</th>
               <th scope="col">Sale-Price</th>
               <th scope="col">Update</th>
               <th scope="col">Delete</th>
@@ -59,16 +61,21 @@
               <th scope="row">{{producto.id_producto}}</th>
               <td>{{producto.nombre}}</td>
               <td>{{producto.descripcion}}</td>
-              <td>{{producto.imagen}}</td>
+              <td>
+                <div class="img-box">
+                  <img src={{producto.imagen}} alt={{producto.imagen}} width="25%">
+                </div>
+              </td>
               <td>{{producto.id_categoria}}</td>
+              <td>{{producto.cantidad}}</td>
               <td>{{producto.costo}}</td>
               <td>
-                <button class="btn btn-outline-success me-2">
+                <button (click)="selectProducto(producto)" class="btn btn-outline-success me-2">
                   <i class="bi-pencil"></i>
                 </button>
               </td>
               <td>
-                <button class="btn btn-outline-danger me-2">
+                <button (click)="deleteProducto(producto)" class="btn btn-outline-danger me-2">
                   <i class="bi-trash-fill"></i>
                 </button>
               </td>

@@ -170,7 +170,7 @@ export class ConectionFireService {
   }
   async deleteProducto(id_producto:String){
     try{
-      const coleccion = collection(this.db, '/producto');
+      const coleccion = collection(this.db, '/productos');
       const q = query(coleccion, where("id_producto", "==", id_producto));
       const referencia = await (await getDocs(q)).docs[0].ref;
       await deleteDoc(referencia);
