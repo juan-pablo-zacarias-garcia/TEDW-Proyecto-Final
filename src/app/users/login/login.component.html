@@ -7,16 +7,22 @@
                   <div class="form_container">
                     <form action="">
                       <div>
-                        <input type="email" class="form-control" placeholder="Your Email" />
+                        <input type="email" class="form-control" placeholder="Your Email" [(ngModel)]="usuario.email" />
                       </div>
                       <div>
-                        <input type="password" class="form-control" placeholder="Password" />
+                        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="usuario.password" />
                       </div>
                       <div class="btn_box">
-                        <button class="col-md-6">
+                        <button class="col-md-6" (click)="Ingresar()">
                           Log In
                         </button>
                         <br>
+                        <!--
+                        <button class="col-md-6" (click)="IngresarWithGoogle()">
+                          Log In With Google
+                        </button>
+                        <br>-->
+                        <label>Aun no tienes cuenta?, da click en Sign_up</label>
                       </div>
                     </form>
                   </div>
