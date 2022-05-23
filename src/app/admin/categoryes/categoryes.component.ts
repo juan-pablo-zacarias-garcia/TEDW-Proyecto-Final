@@ -82,6 +82,7 @@ export class CategoryesComponent implements OnInit {
   }
 
   actualizaCategorias(){
+    this.muestraBtnAdd();
     this.conexion.getCategorias().then(data=>{
       this.categorias_disponibles=data;
     });

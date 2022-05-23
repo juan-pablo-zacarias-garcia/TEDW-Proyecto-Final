@@ -29,7 +29,7 @@ import { SaleDetailsComponent } from './admin/sales/sale-details/sale-details.co
 import { CategoryesComponent } from './admin/categoryes/categoryes.component';
 import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
 import { FooterAdminComponent } from './admin/footer-admin/footer-admin.component';
-//import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireModule } from '@angular/fire/compat';
 import { CarritoComponent } from './users/carrito/carrito.component';
 
 
@@ -80,7 +80,7 @@ const environment = {
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    //AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
