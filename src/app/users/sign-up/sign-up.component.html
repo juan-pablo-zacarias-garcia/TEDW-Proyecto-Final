@@ -11,21 +11,24 @@
                 <div class="col-md-6">
                   <div class="form_container">
                     <form action="">
-                      <div>
-                        <input type="text" class="form-control" placeholder="First Name" />
+                      <!--<div>
+                        <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="usuario.firstname"/>
                       </div>
                       <div>
-                        <input type="text" class="form-control" placeholder="Last Name" />
+                        <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="usuario.lastname"/>
                       </div>
                       <div>
-                        <input type="text" class="form-control" placeholder="Age" />
+                        <input type="text" class="form-control" placeholder="Age" [(ngModel)]="usuario.age"/>
                       </div>
                       <div>
-                        <input type="text" class="form-control" placeholder="Phone Number" />
+                        <input type="text" class="form-control" placeholder="Phone Number" [(ngModel)]="usuario.phone"/>
                       </div>
                       <div>
-                        <input type="email" class="form-control" placeholder="Your Email" />
-                      </div>
+                        <input type="email" class="form-control" placeholder="Your Email" [(ngModel)]="usuario.email"/>
+                      </div> 
+                      <div>
+                        <input type="password" class="form-control" placeholder="Your Password" [(ngModel)]="usuario.password"/>
+                      </div> 
                       <div>
                         <select class="form-control nice-select wide">
                           <option value="" disabled selected>
@@ -45,15 +48,15 @@
                           </option>
                         </select>
                       </div>
-                      <div class="btn_box">
+                      <div class="btn_box" (click)="Register()">
                         <button class="col-md-12">
                           Sign Up
                         </button>
                         <br>
-                        <button class="col-md-12"> 
-                            Sign Up with Google
+                      </div>-->
+                      <button class="col-md-6" (click)="IngresarWithGoogle()">
+                          Log In With Google
                         </button>
-                      </div>
                     </form>
                   </div>
                 </div>

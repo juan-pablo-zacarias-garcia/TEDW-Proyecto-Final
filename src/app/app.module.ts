@@ -28,6 +28,23 @@ import { SaleDetailsComponent } from './admin/sales/sale-details/sale-details.co
 import { CategoryesComponent } from './admin/categoryes/categoryes.component';
 import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
 import { FooterAdminComponent } from './admin/footer-admin/footer-admin.component';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { CarritoComponent } from './users/carrito/carrito.component';
+
+
+const environment = {
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyBEdtmPUs1Vegbq26Fw-HKChw-SLdzTvCU",
+    authDomain: "restaurant-22b46.firebaseapp.com",
+    projectId: "restaurant-22b46",
+    storageBucket: "restaurant-22b46.appspot.com",
+    messagingSenderId: "955096161416",
+    appId: "1:955096161416:web:1265f4ed4210255fe5533d",
+    measurementId: "G-TQJ6PNPHMV"
+  },
+};
 
 @NgModule({
   declarations: [
@@ -55,12 +72,15 @@ import { FooterAdminComponent } from './admin/footer-admin/footer-admin.componen
     SaleDetailsComponent,
     CategoryesComponent,
     NavbarAdminComponent,
-    FooterAdminComponent 
+    FooterAdminComponent,
+    CarritoComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
