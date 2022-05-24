@@ -5,4 +5,5 @@ export interface Interface_Producto {
     imagen: String;
     id_categoria:String
     costo:Number;
+    cantidad:Number;
 }

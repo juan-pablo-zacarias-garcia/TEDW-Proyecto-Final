@@ -73,7 +73,6 @@ export class CategoryesComponent implements OnInit {
       if(data){
         alert("Categoria actualizada: "+categoria.nombre);
         this.actualizaCategorias();
-        this.muestraBtnAdd();
       }
       else{
         alert("Error al actualizar los datos");
