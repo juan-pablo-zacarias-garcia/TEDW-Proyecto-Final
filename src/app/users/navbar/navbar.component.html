@@ -32,28 +32,26 @@
               <a class="nav-link" href="#section_book">Book Table</a>
             </li>
           </ul>
-          <div class="user_option">
+          <div class="m-4">
             <a href="" class="user_link">
               <i class="fa fa-user" aria-hidden="true"></i>
             </a>
-            <a href="/carrito" class="carrito_link">
+            <a *ngIf="isLogged" href="/carrito" class="carrito_link btn btn-outline-warning mr-4">
               <i class="bi bi-cart"></i>
             </a>
-            <form class="form-inline">
-              <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
-            <a href="/sign_up" class="order_online">
+            <a *ngIf="!isLogged" href="/sign_up" class="order_online btn btn-outline-warning mr-4">
               Sign Up
             </a>
-            <a href="/login" class="order_online">
+            <a *ngIf="!isLogged" href="/login" class="order_online btn btn-outline-warning mr-4">
               Login
             </a>
-            <a href="/" (click)="singOut()" class="order_online">
+            <a *ngIf="isLogged" href="/" (click)="signOut()" class="order_online btn btn-outline-warning mr-4">
               Log Out
             </a>
-            <a href="/admin" class="order_online">
+            <a *ngIf="isLogged" href="#" class="order_online btn btn-outline-warning mr-4">
+              {{user.displayName}}
+            </a>
+            <a *ngIf="isLogged" href="/admin" class="order_online btn btn-outline-warning mr-4">
               Admin
             </a>
           </div>

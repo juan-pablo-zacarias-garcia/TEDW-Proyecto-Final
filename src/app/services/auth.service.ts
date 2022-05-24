@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
+import { first } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,8 +39,8 @@ export class AuthService {
       return null;
     }
   }
-  async getLoggedUser(){
-    return await this.afauth.currentUser;
+  getLoggedUser(){
+    return this.afauth.authState.pipe(first()).toPromise();
   }
   async logOut(){
     return await this.afauth.signOut().then(data=>{
