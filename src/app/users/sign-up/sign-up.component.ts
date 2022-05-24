@@ -13,23 +13,9 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  usuario = {
-    email: '',
-    password: '',
-  }
-
-  Register(){
-    console.log(this.usuario);
-    const { email, password } = this.usuario;
-    this.authService.register(email, password).then(res => {
-      console.log("Se registro correctamente: ",res);
-    })
-  }
 
   IngresarWithGoogle(){
-    console.log(this.usuario);
-    const { email, password } = this.usuario;
-    this.authService.loginWithGoogle(email, password).then(res => {
+    this.authService.loginWithGoogle().then(res => {
       console.log("Inicio sesion con Google correctamente: ",res);
     })
   }

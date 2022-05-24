@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 //import { Interface_Usuarios } from './interfaces/int_usuario';
 import { initializeApp } from 'firebase/app';
 import { environment } from '../environments/environment';
-import { doc,getFirestore, collection, getDocs, addDoc, deleteDoc, query, where, setDoc} from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, query, where, setDoc} from 'firebase/firestore/lite';
 import { getStorage, ref } from "firebase/storage";
 import { Interface_Categoria } from './interfaces/int_categoria';
 import { Interface_Producto } from './interfaces/int_pruducto';
@@ -15,6 +15,7 @@ import { Interface_Cupon } from './interfaces/int_cupon';
 import { Interface_Metodo_Pago } from './interfaces/int_metodo_pago';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,9 +25,6 @@ export class ConectionFireService {
   //inicializar firebase
   app = initializeApp(environment.firebaseConfig);
   db = getFirestore(this.app);
-  storage = getStorage(this.app);
-  // Create a storage reference from our storage service
-  storageRef = ref(this.storage);
 
 
   //seccion de clientes
