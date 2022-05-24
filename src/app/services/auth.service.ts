@@ -42,6 +42,8 @@ export class AuthService {
     return await this.afauth.currentUser;
   }
   async logOut(){
-    return await this.afauth.signOut();
+    return await this.afauth.signOut().then(data=>{
+      return data;
+    });
   }
 }

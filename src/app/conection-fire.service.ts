@@ -23,7 +23,7 @@ export class ConectionFireService {
 
   constructor() { }
   //inicializar firebase
-  app = initializeApp(environment.firebaseConfig);
+  app = initializeApp(environment.firebaseConfig, "BaseDatos");
   db = getFirestore(this.app);
 
 
