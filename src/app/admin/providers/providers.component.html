@@ -13,16 +13,27 @@
           <h5>Add Provider</h5>
           <form action="" method="POST">
               <div class="input-group" style="margin-top: 10px;">
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                  <input type="text" class="form-control" id="residence" name="residence" placeholder="Residence"  style="margin-left: 15px;">
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Email" style="margin-left: 15px;">
-                  <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone" style="margin-left: 15px;">
-                  <input type="text" class="form-control" id="rfc" name="rfc" placeholder="RFC" style="margin-left: 15px;">
-                  <input type="date" class="form-control" id="date of admission" name="date of admission" placeholder="Date of Admission" style="margin-left: 15px;">
+                  <input required type="text" class="form-control" id="name" [(ngModel)]='nuevo_proveedor.name' name="name" placeholder="Name">
+                  <input required type="text" class="form-control" id="residence" [(ngModel)]='nuevo_proveedor.residence' name="residence" placeholder="Residence"  style="margin-left: 15px;">
+                  <input required type="email" class="form-control" id="email" [(ngModel)]='nuevo_proveedor.email' name="email" placeholder="Email" style="margin-left: 15px;">
+                  <input required type="number" class="form-control" id="phone" [(ngModel)]='nuevo_proveedor.phone' name="phone" placeholder="Phone" style="margin-left: 15px;">
+                  <input required type="text" class="form-control" id="rfc" [(ngModel)]='nuevo_proveedor.rfc' name="rfc" placeholder="RFC" style="margin-left: 15px;">
+                  <input required type="date" class="form-control" id="date_of_admission" [(ngModel)]='nuevo_proveedor.date_of_admission' name="date_of_admission" placeholder="Date of Admission" style="margin-left: 15px;">
               </div>
-                  <a type="submit" href="index.html" routerLink="/add_category" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div id="btns_providers">
+                <button (click)="addProveedor()" type="submit" id="btn_add" class="btn btn-success m-4" >
+                  <i class="bi bi-plus" > Add provider</i>
+                </button>
+                <button (click)="updateProveedor(nuevo_proveedor)" type="submit" id="btn_update" class="btn btn-success m-4" >
+                  <i class="bi bi-plus" > Update provider</i>
+                </button>
+                <button  (click)="actualizaProveedor()" type="submit" id="btn_cancel" class="btn btn-danger m-4" >
+                  <i class="bi bi-plus" > Cancel</i>
+                </button>
+              </div>
+                  <!--<a type="submit" href="index.html" routerLink="/add_category" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <img src="assets/images/add.png" style="border-radius: 30%; margin-top: 10px;" width="30px">
-                  </a>
+                  </a>-->
           </form>
       </div>
   </div>
@@ -43,27 +54,28 @@
               <th scope="col">Delete</th>
             </tr>
           </thead>
-          <tbody style="text-align: center;">
-            <tr class="table-active">
-              <th scope="row">1</th>
-              <td>Grupo Modelo</td>
-              <td>Celaya, Gto.</td>
-              <td>grupomodelo@modelo.com</td>
-              <td>123456789</td>
-              <td>MODELO1234567</td>
-              <td>08-11-2011</td>
-              <td>
-                <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="assets/images/edit.png" style="border-radius: 28%" width="28px">
-                </a>
-              </td>
-              <td>
-                <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="assets/images/delete.png" style="border-radius: 26%" width="26px">
-                </a>
-              </td>
-            </tr>
-          </tbody>
+          <tbody style="text-align: center;" *ngFor="let proveedores of proveedores_disponibles">
+            <script>$(".table").DataTable();</script>
+          <tr class="table-active" >
+            <th scope="row">{{proveedores.id_proveedor}}</th>
+            <td>{{proveedores.name}}</td>
+            <td>{{proveedores.residence}}</td>
+            <td>{{proveedores.email}}</td>
+            <td>{{proveedores.phone}}</td>
+            <td>{{proveedores.rfc}}</td>
+            <td>{{proveedores.date_of_admission}}</td>
+            <td>
+                <button class="btn btn-outline-success me-2" (click)="selectProveedor(proveedores)">
+                    <i class="bi-pencil"></i>
+              </button>
+            </td>
+            <td>
+                <button class="btn btn-outline-danger me-2" (click)="deleteProveedor(proveedores)">
+                    <i class="bi-trash-fill"></i>
+                  </button>
+            </td>
+          </tr>
+        </tbody>
         </table>
       </div>
     </div>

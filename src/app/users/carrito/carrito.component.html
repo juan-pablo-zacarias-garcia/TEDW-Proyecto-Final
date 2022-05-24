@@ -53,9 +53,9 @@
                   <h6>
                     ${{producto.costo}}
                   </h6>
-                  <a >
-                    <i class="bi bi-cart-plus"></i>
-                  </a>
+                  <button class="btn btn-outline-danger me-2" (click)="deleteProducto(producto)">
+                    <i class="bi-trash-fill"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -64,8 +64,17 @@
       </div>
     </div>
  </section>
- <div id="btns_carrito">
+ <div class="container" style="margin-left: 80%; margin-top: -50px; width: 90px; height: 30px;">
+  <!--<div class="input-group" style="margin-top: 10px;">
+    <input type="number" min="0" class="form-control" id="sale-price" [(ngModel)]='nuevo_producto.costo' name="sale-price" placeholder="Sale-Price" style="margin-left: 15px;">
+    <select id="categoria"  class="form form-select" (change)="selectCategoria($event)">
+        <option value="null">-</option>
+        <option *ngFor="let categoria of categorias" value={{categoria.id_categoria}} >({{categoria.id_categoria}}) {{categoria.nombre}}</option>
+    </select>
+  </div>-->
+  <div id="btns_carrito">
     <button (click)="procederPago()" type="submit" id="btn_addCarrito" class="btn btn-success m-4">
       <i class="bi bi-plus" > Pagar</i>
     </button>
- </div>      
+  </div>
+</div>      

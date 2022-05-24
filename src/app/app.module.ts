@@ -31,6 +31,8 @@ import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.componen
 import { FooterAdminComponent } from './admin/footer-admin/footer-admin.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { CarritoComponent } from './users/carrito/carrito.component';
+import { CuponesComponent } from './admin/cupones/cupones.component';
+import { MPagoComponent } from './admin/m-pago/m-pago.component';
 
 
 const environment = {
@@ -73,7 +75,9 @@ const environment = {
     CategoryesComponent,
     NavbarAdminComponent,
     FooterAdminComponent,
-    CarritoComponent 
+    CarritoComponent,
+    CuponesComponent,
+    MPagoComponent 
   ],
   imports: [
     BrowserModule,

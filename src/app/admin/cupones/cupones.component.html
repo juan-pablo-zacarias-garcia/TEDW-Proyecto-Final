@@ -1,0 +1,74 @@
+<body class="sb-nav-fixed">
+    <app-navbar-admin></app-navbar-admin>
+
+    <div class="container">
+      <div class="heading_container heading_center psudo_white_primary mb_45" style="margin-top: 25px;">
+        <h2>
+          Cupónes
+        </h2>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="heading_container heading_center psudo_white_primary mb_45"  style="margin-top: 25px;">
+            <h5>Add Coupon</h5>
+            <form action="" method="POST">
+                <div class="input-group" style="margin-top: 10px;">
+                    <input required type="text" class="form-control" id="nombre" [(ngModel)]='nuevo_cupon.name' name="name" placeholder="Name">
+                    <input required type="text" class="form-control" id="imagen" [(ngModel)]='nuevo_cupon.imagen' name="image" placeholder="Image"   style="margin-left: 25px;">
+                    <input required type="number" class="form-control" id="discount" [(ngModel)]='nuevo_cupon.discount' name="discount" placeholder="Discount"  style="margin-left: 25px;">
+                </div>
+                <div id="btns_cupon">
+                  <button (click)="addCupon()" type="submit" id="btn_add" class="btn btn-success m-4" >
+                    <i class="bi bi-plus" > Add coupon</i>
+                  </button>
+                  <button (click)="updateCupon(nuevo_cupon)" type="submit" id="btn_update" class="btn btn-success m-4" >
+                    <i class="bi bi-plus" > Update coupon</i>
+                  </button>
+                  <button  (click)="actualizaCupones()" type="submit" id="btn_cancel" class="btn btn-danger m-4" >
+                    <i class="bi bi-plus" > Cancel</i>
+                  </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-12" style="margin-top: 40px;">
+        <div class="container">
+          <table class="table table-hover" id="tbl_categorias">
+            <thead>
+              <tr style="text-align: center;">
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Discount</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody style="text-align: center;" *ngFor="let cupon of cupones_disponibles">
+                <script>$(".table").DataTable();</script>
+              <tr class="table-active" >
+                <th scope="row">{{cupon.id_cupon}}</th>
+                <td>{{cupon.name}}</td>
+                <td>
+                    <div class="img-box">
+                        <img src={{cupon.imagen}} alt={{cupon.name}} width="25%">
+                      </div>
+                </td>
+                <td>${{cupon.discount}}</td>
+                <td>
+                    <button class="btn btn-outline-success me-2" (click)="selectCupon(cupon)">
+                        <i class="bi-pencil"></i>
+                  </button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger me-2" (click)="deleteCupon(cupon)">
+                        <i class="bi-trash-fill"></i>
+                      </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</body>

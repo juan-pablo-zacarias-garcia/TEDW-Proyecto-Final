@@ -12,25 +12,32 @@
             <h5>Add Employee</h5>
             <form action="" method="POST">
                 <div class="input-group" style="margin-top: 10px;">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" style="margin-left: 15px;">
-                    <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender" style="margin-left: 15px;">
-                    <input type="number" class="form-control" id="age" name="age" placeholder="Age" style="margin-left: 15px;">
-                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone" style="margin-left: 15px;">
-                    <input type="text" class="form-control" id="residence" name="residence" placeholder="Residence"  style="margin-left: 15px;">
+                    <input type="text" class="form-control" id="name" [(ngModel)]='nuevo_empleado.name' name="name" placeholder="Name" style="margin-left: 15px;">
+                    <input type="text" class="form-control" id="gender" [(ngModel)]='nuevo_empleado.gender' name="gender" placeholder="Gender" style="margin-left: 15px;">
+                    <input type="number" class="form-control" id="age" [(ngModel)]='nuevo_empleado.age' name="age" placeholder="Age" style="margin-left: 15px;">
+                    <input type="number" class="form-control" id="phone" [(ngModel)]='nuevo_empleado.phone' name="phone" placeholder="Phone" style="margin-left: 15px;">
+                    <input type="text" class="form-control" id="residence" [(ngModel)]='nuevo_empleado.residence' name="residence" placeholder="Residence"  style="margin-left: 15px;">
                 </div>
                 <div class="input-group" style="margin-top: 10px;">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" style="margin-left: 15px;">
-                    <input type="date" class="form-control" id="date of admission" name="date of admission" placeholder="Date of Admission" style="margin-left: 15px;">
-                    <select class="form-control" id="area" name="area" placeholder="Area" style="margin-left: 15px;">
-                      <option>Barra</option>
-                      <option>Cocina</option>
-                    </select>
-                    <input type="text" class="form-control" id="position" name="position" placeholder="Position" style="margin-left: 15px;">
-                    <input type="number" class="form-control" id="salary" name="salary" placeholder="Salary" style="margin-left: 15px;">
+                    <input type="email" class="form-control" id="email" [(ngModel)]='nuevo_empleado.email' name="email" placeholder="Email" style="margin-left: 15px;">
+                    <input type="date" class="form-control" id="date of admission" [(ngModel)]='nuevo_empleado.date_of_admission' name="date of admission" placeholder="Date of Admission" style="margin-left: 15px;">
+                    <input type="text" class="form-control" id="position" [(ngModel)]='nuevo_empleado.position' name="position" placeholder="Position" style="margin-left: 15px;">
+                    <input type="number" class="form-control" id="salary" [(ngModel)]='nuevo_empleado.salary' name="salary" placeholder="Salary" style="margin-left: 15px;">
                 </div>
-                    <a type="submit" href="index.html" routerLink="/add_category" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div id="btns_empleados">
+                  <button (click)="addEmpleado()" type="submit" id="btn_add" class="btn btn-success m-4" >
+                    <i class="bi bi-plus" > Add employee</i>
+                  </button>
+                  <button (click)="updateEmpleado(nuevo_empleado)" type="submit" id="btn_update" class="btn btn-success m-4" >
+                    <i class="bi bi-plus" > Update employee</i>
+                  </button>
+                  <button  (click)="actualizaEmpleados()" type="submit" id="btn_cancel" class="btn btn-danger m-4" >
+                    <i class="bi bi-plus" > Cancel</i>
+                  </button>
+                </div>
+                    <!--<a type="submit" href="index.html" routerLink="/add_category" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="assets/images/add.png" style="border-radius: 30%; margin-top: 10px;" width="30px">
-                    </a>
+                    </a>-->
             </form>
         </div>
     </div>
@@ -47,38 +54,37 @@
                 <th scope="col">Residence</th>
                 <th scope="col">Email</th>
                 <th scope="col">Date of admission</th>
-                <th scope="col">Area</th>
                 <th scope="col">Position</th>
                 <th scope="col">Salary</th>
                 <th scope="col">Update</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
-            <tbody style="text-align: center;">
-              <tr class="table-active">
-                <th scope="row">1</th>
-                <td>Oscar Daniel Garcia Lazaro</td>
-                <td>Masculino</td>
-                <td>25</td>
-                <td>413-165-2426</td>
-                <td>Apaseo el Grande</td>
-                <td>daniel_cim123@outlook.com</td>
-                <td>07-09-2015</td>
-                <td>Systems</td>
-                <td>Ing. Systems</td>
-                <td>$35,000</td>
-                <td>
-                  <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="assets/images/edit.png" style="border-radius: 28%" width="28px">
-                  </a>
-                </td>
-                <td>
-                  <a href="index.html" routerLink="/login" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="assets/images/delete.png" style="border-radius: 26%" width="26px">
-                  </a>
-                </td>
-              </tr>
-            </tbody>
+            <tbody style="text-align: center;" *ngFor="let empleado of empleados_disponibles">
+              <script>$(".table").DataTable();</script>
+            <tr class="table-active" >
+              <th scope="row">{{empleado.id_empleado}}</th>
+              <td>{{empleado.name}}</td>
+              <td>{{empleado.gender}}</td>
+              <td>{{empleado.age}}</td>
+              <td>{{empleado.phone}}</td>
+              <td>{{empleado.residence}}</td>
+              <td>{{empleado.email}}</td>
+              <td>{{empleado.date_of_admission}}</td>
+              <td>{{empleado.position}}</td>
+              <td>${{empleado.salary}}</td>
+              <td>
+                  <button class="btn btn-outline-success me-2" (click)="selectEmpleado(empleado)">
+                      <i class="bi-pencil"></i>
+                </button>
+              </td>
+              <td>
+                  <button class="btn btn-outline-danger me-2" (click)="deleteEmpleado(empleado)">
+                      <i class="bi-trash-fill"></i>
+                    </button>
+              </td>
+            </tr>
+          </tbody>
           </table>
         </div>
       </body>

@@ -37,7 +37,18 @@ export class CarritoComponent implements OnInit {
     
   }
 
-  deleteProducto(){
-    
+  deleteProducto(producto:Interface_Producto){
+    this.conexion.deleteProducto(this.carrito.id_carrito).then(data=>{
+      if(data){
+        alert("Producto eliminado");
+        this.actualizaCarrito();
+      }
+    });
+  }
+
+  actualizaCarrito(){
+    this.conexion.getProductos().then(data=>{
+      this.carrito.productos=data;
+    });
   }
 }

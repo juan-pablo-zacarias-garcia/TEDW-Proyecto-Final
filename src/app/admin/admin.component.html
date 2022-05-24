@@ -39,39 +39,32 @@
                         <table class="table table-boardered" id="datatable" width="100%" cellspacing="0">
                             <thead style="text-align: center;">
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Area</th>
-                                    <th>Age</th>
-                                    <th>Date of Admission</th>
-                                    <th>Salary</th>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Residence</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Date of admission</th>
+                                    <th scope="col">Position</th>
+                                    <th scope="col">Salary</th>
                                 </tr>
                             </thead>
-                            <tbody style="text-align: center;">
-                                <tr>
-                                    <td>Daniel Garcia</td>
-                                    <td>Ing. Systems Computer</td>
-                                    <td>Systems</td>
-                                    <td>25</td>
-                                    <td>2011/04/05</td>
-                                    <td>$35,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Andy Gomez</td>
-                                    <td>Lic. E-commerce</td>
-                                    <td>Aliments</td>
-                                    <td>22</td>
-                                    <td>2015/10/15</td>
-                                    <td>$40,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Leonardo Garcia</td>
-                                    <td>Chef</td>
-                                    <td>Kitchen Room</td>
-                                    <td>30</td>
-                                    <td>2020/09/14</td>
-                                    <td>$28,000</td>
-                                </tr>
+                            <tbody style="text-align: center;" *ngFor="let empleado of empleados_disponibles">
+                                <script>$(".table").DataTable();</script>
+                              <tr class="table-active" >
+                                <th scope="row">{{empleado.id_empleado}}</th>
+                                <td>{{empleado.name}}</td>
+                                <td>{{empleado.gender}}</td>
+                                <td>{{empleado.age}}</td>
+                                <td>{{empleado.phone}}</td>
+                                <td>{{empleado.residence}}</td>
+                                <td>{{empleado.email}}</td>
+                                <td>{{empleado.date_of_admission}}</td>
+                                <td>{{empleado.position}}</td>
+                                <td>${{empleado.salary}}</td>
+                              </tr>
                             </tbody>
                         </table>
                     </div>

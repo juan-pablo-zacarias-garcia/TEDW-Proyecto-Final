@@ -13,6 +13,8 @@ import { ProvidersComponent } from './admin/providers/providers.component';
 import { SaleDetailsComponent } from './admin/sales/sale-details/sale-details.component';
 import { CategoryesComponent } from './admin/categoryes/categoryes.component';
 import { CarritoComponent } from './users/carrito/carrito.component';
+import { CuponesComponent } from './admin/cupones/cupones.component';
+import { MPagoComponent } from './admin/m-pago/m-pago.component';
 const routes: Routes = [
   { path: '',   component:HomeGuestComponent},
   {path:'sign_up', component: SignUpComponent},
@@ -25,7 +27,9 @@ const routes: Routes = [
   {path:'customers', component:CustomersComponent},
   {path:'providers', component:ProvidersComponent},
   {path:'categoryes', component:CategoryesComponent},
-  {path:'carrito', component:CarritoComponent}
+  {path:'carrito', component:CarritoComponent},
+  {path:'cupones', component:CuponesComponent},
+  {path:'mPago', component:MPagoComponent}
 ];
 
 @NgModule({

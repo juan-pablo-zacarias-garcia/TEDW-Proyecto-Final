@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 //importamos las interfaces
-import { Interface_Usuarios } from './interfaces/int_usuario';
+//import { Interface_Usuarios } from './interfaces/int_usuario';
 import { initializeApp } from 'firebase/app';
 import { environment } from '../environments/environment';
 import { doc,getFirestore, collection, getDocs, addDoc, deleteDoc, query, where, setDoc} from 'firebase/firestore/lite';
@@ -8,6 +8,11 @@ import { getStorage, ref } from "firebase/storage";
 import { Interface_Categoria } from './interfaces/int_categoria';
 import { Interface_Producto } from './interfaces/int_pruducto';
 import { Interface_Carrito } from './interfaces/int_carrito';
+import { Interface_Proveedor } from './interfaces/int_proveedor';
+import { Interface_Empleado } from './interfaces/int_empleado';
+import { Interface_Cliente } from './interfaces/int_cliente';
+import { Interface_Cupon } from './interfaces/int_cupon';
+import { Interface_Metodo_Pago } from './interfaces/int_metodo_pago';
 
 
 @Injectable({
@@ -23,51 +28,52 @@ export class ConectionFireService {
   // Create a storage reference from our storage service
   storageRef = ref(this.storage);
 
-  //seccion de uusarios
+
+  //seccion de clientes
  
-  //obtener todos los usuarios
-  async  getUsers(){
-    const usuarios = collection(this.db, 'usuarios');
-    const usuariosSnapshot = await getDocs(usuarios);
-    const usuariosList = usuariosSnapshot.docs.map( doc=>doc.data()) as Interface_Usuarios[];
-    return usuariosList;
+  //obtener todos los clientes
+  async  getClientes(){
+    const clientes = collection(this.db, 'clientes');
+    const clientesSnapshot = await getDocs(clientes);
+    const clientesList = clientesSnapshot.docs.map( doc=>doc.data()) as Interface_Cliente[];
+    return clientesList;
     }
   //obtener un usuario
-    async getUser(clave_usuario:String){
-      const coleccion = collection(this.db, '/usuarios');
-      const q = query(coleccion, where("clave_usuario", "==", clave_usuario));
+    async getCliente(email:String){
+      const coleccion = collection(this.db, '/clientes');
+      const q = query(coleccion, where("email", "==", email));
       const querySnapshot = await getDocs(q);
       if(querySnapshot){
-        return <Interface_Usuarios>querySnapshot.docs[0].data();
+        return <Interface_Cliente>querySnapshot.docs[0].data();
       }
       else{
         return null;
       }    
     }
-    async addUser( usuario:Interface_Usuarios ){
+    async addCliente( cliente:Interface_Cliente ){
       try {
-        const docRef = await addDoc(collection(this.db, "usuarios"), usuario);
+        const docRef = await addDoc(collection(this.db, "clientes"), cliente);
         return true;
       } catch (e) {
         return false;
       }
     }
-    async updateUser(usuario: Interface_Usuarios){
+    async updateCliente(cliente: Interface_Cliente){
       try{
-        const coleccion = collection(this.db, '/usuarios');
-        const q = query(coleccion, where("clave_usuario", "==", usuario.clave_usuario));
+        const coleccion = collection(this.db, '/clientes');
+        const q = query(coleccion, where("email", "==", cliente.email));
         const referencia = await (await getDocs(q)).docs[0].ref;
-        await setDoc(referencia, usuario);
+        await setDoc(referencia, cliente);
         return true;
   
       }catch(e){
         return null;
       }
     }
-    async deleteUser(clave_usuario:String){
+    async deleteCliente(email:String){
       try{
-        const coleccion = collection(this.db, '/usuarios');
-        const q = query(coleccion, where("clave_usuario", "==", clave_usuario));
+        const coleccion = collection(this.db, '/clientes');
+        const q = query(coleccion, where("email", "==", email));
         const referencia = await (await getDocs(q)).docs[0].ref;
         await deleteDoc(referencia);
         return true;
@@ -121,6 +127,220 @@ export class ConectionFireService {
     try{
       const coleccion = collection(this.db, '/categorias');
       const q = query(coleccion, where("id_categoria", "==", id_categoria));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await deleteDoc(referencia);
+      return true;
+    }catch(e){
+      return false;
+    } 
+  }
+
+
+//seccion de cupones
+
+//obtener todas los cupones
+ async  getCupones(){
+  const cupones = collection(this.db, 'cupones');
+  const cuponesSnapshot = await getDocs(cupones);
+  const cuponesList = cuponesSnapshot.docs.map( doc=>doc.data()) as Interface_Cupon[];
+  return cuponesList;
+  }
+//obtener un cupon
+  async getCupon(id_cupon:String){
+    const coleccion = collection(this.db, '/cupones');
+    const q = query(coleccion, where("id_cupon", "==", id_cupon));
+    const querySnapshot = await getDocs(q);
+    if(querySnapshot){
+      return <Interface_Cupon>querySnapshot.docs[0].data();
+    }
+    else{
+      return null;
+    }    
+  }
+  async addCupon( cupon:Interface_Cupon ){
+    try {
+      const docRef = await addDoc(collection(this.db, "cupones"), cupon);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  async updateCupon(cupon: Interface_Cupon){
+    try{
+      const coleccion = collection(this.db, '/cupones');
+      const q = query(coleccion, where("id_cupon", "==", cupon.id_cupon));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await setDoc(referencia, cupon);
+      return true;
+
+    }catch(e){
+      return null;
+    }
+  }
+  async deleteCupon(id_cupon:String){
+    try{
+      const coleccion = collection(this.db, '/cupones');
+      const q = query(coleccion, where("id_cupon", "==", id_cupon));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await deleteDoc(referencia);
+      return true;
+    }catch(e){
+      return false;
+    } 
+  }
+
+
+//seccion de metodos de pagos
+
+//obtener todas los metodos de pago
+async  getmPagos(){
+  const mPagos = collection(this.db, 'mPagos');
+  const mPagosSnapshot = await getDocs(mPagos);
+  const mPagosList = mPagosSnapshot.docs.map( doc=>doc.data()) as Interface_Metodo_Pago[];
+  return mPagosList;
+  }
+//obtener un cupon
+  async getmPago(id_mPago:String){
+    const coleccion = collection(this.db, '/mPagos');
+    const q = query(coleccion, where("id_mPago", "==", id_mPago));
+    const querySnapshot = await getDocs(q);
+    if(querySnapshot){
+      return <Interface_Metodo_Pago>querySnapshot.docs[0].data();
+    }
+    else{
+      return null;
+    }    
+  }
+  async addmPago( mPago:Interface_Metodo_Pago ){
+    try {
+      const docRef = await addDoc(collection(this.db, "mPagos"), mPago);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  async updatemPago(mPago: Interface_Metodo_Pago){
+    try{
+      const coleccion = collection(this.db, '/mPagos');
+      const q = query(coleccion, where("id_mPago", "==", mPago.id_mPago));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await setDoc(referencia, mPago);
+      return true;
+
+    }catch(e){
+      return null;
+    }
+  }
+  async deletemPago(id_mPago:String){
+    try{
+      const coleccion = collection(this.db, '/mPagos');
+      const q = query(coleccion, where("id_mPago", "==", id_mPago));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await deleteDoc(referencia);
+      return true;
+    }catch(e){
+      return false;
+    } 
+  }
+
+//seccion de empleados
+
+ //obtener todos los empleados
+ async  getEmpleados(){
+  const empleados = collection(this.db, 'empleados');
+  const empleadosSnapshot = await getDocs(empleados);
+  const empleadosList = empleadosSnapshot.docs.map( doc=>doc.data()) as Interface_Empleado[];
+  return empleadosList;
+  }
+//obtener una empleado
+  async getEmpleado(id_empleado:String){
+    const coleccion = collection(this.db, '/empleados');
+    const q = query(coleccion, where("id_empleados", "==", id_empleado));
+    const querySnapshot = await getDocs(q);
+    if(querySnapshot){
+      return <Interface_Empleado>querySnapshot.docs[0].data();
+    }
+    else{
+      return null;
+    }    
+  }
+  async addEmpleado( empleado:Interface_Empleado ){
+    try {
+      const docRef = await addDoc(collection(this.db, "empleados"), empleado);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  async updateEmpleado(empleado: Interface_Empleado){
+    try{
+      const coleccion = collection(this.db, '/empleados');
+      const q = query(coleccion, where("id_empleado", "==", empleado.id_empleado));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await setDoc(referencia, empleado);
+      return true;
+
+    }catch(e){
+      return null;
+    }
+  }
+  async deleteEmpleado(id_empleado:String){
+    try{
+      const coleccion = collection(this.db, '/empleados');
+      const q = query(coleccion, where("id_empleado", "==", id_empleado));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await deleteDoc(referencia);
+      return true;
+    }catch(e){
+      return false;
+    } 
+  }
+
+//seccion de proveedores
+
+//obtener todas los proveedores
+ async  getProveedores(){
+  const proveedores = collection(this.db, 'proveedores');
+  const proveedoresSnapshot = await getDocs(proveedores);
+  const proveedoresList = proveedoresSnapshot.docs.map( doc=>doc.data()) as Interface_Proveedor[];
+  return proveedoresList;
+  }
+//obtener una categoria
+  async getProveedor(id_proveedor:String){
+    const coleccion = collection(this.db, '/proveedor');
+    const q = query(coleccion, where("id_proveedor", "==", id_proveedor));
+    const querySnapshot = await getDocs(q);
+    if(querySnapshot){
+      return <Interface_Proveedor>querySnapshot.docs[0].data();
+    }
+    else{
+      return null;
+    }    
+  }
+  async addProveedor( proveedor:Interface_Proveedor ){
+    try {
+      const docRef = await addDoc(collection(this.db, "proveedores"), proveedor);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  async updateProveedor(proveedor: Interface_Proveedor){
+    try{
+      const coleccion = collection(this.db, '/proveedores');
+      const q = query(coleccion, where("id_proveedor", "==", proveedor.id_proveedor));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await setDoc(referencia, proveedor);
+      return true;
+
+    }catch(e){
+      return null;
+    }
+  }
+  async deleteProveedor(id_proveedor:String){
+    try{
+      const coleccion = collection(this.db, '/proveedores');
+      const q = query(coleccion, where("id_proveedor", "==", id_proveedor));
       const referencia = await (await getDocs(q)).docs[0].ref;
       await deleteDoc(referencia);
       return true;
@@ -188,6 +408,7 @@ export class ConectionFireService {
     } 
   } 
 
+  
   //métodos de carrito
   async getCarrito(id_carrito:String){
     const coleccion = collection(this.db, '/carritos');
