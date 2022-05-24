@@ -408,9 +408,9 @@ async  getmPagos(){
 
   
   //métodos de carrito
-  async getCarrito(id_carrito:String){
+  async getCarrito(id_usuario: String){
     const coleccion = collection(this.db, '/carritos');
-    const q = query(coleccion, where("id_carrito", "==", id_carrito));
+    const q = query(coleccion, where("id_usuario", "==", id_usuario));
     const querySnapshot = await getDocs(q);
     if(querySnapshot){
       return <Interface_Carrito>querySnapshot.docs[0].data();
@@ -431,7 +431,7 @@ async  getmPagos(){
   async updateCarrito(carrito:Interface_Carrito){
     try{
       const coleccion = collection(this.db, '/carritos');
-      const q = query(coleccion, where("id_carrito", "==", carrito.id_carrito));
+      const q = query(coleccion, where("id_usuario", "==", carrito.id_usuario));
       const referencia = await (await getDocs(q)).docs[0].ref;
       await setDoc(referencia, carrito);
       return true;
@@ -439,10 +439,10 @@ async  getmPagos(){
       return null;
     }
   }
-  async deleteCarrito(id_carrito:String){
+  async deleteCarrito(id_usuario:String){
     try{
       const coleccion = collection(this.db, '/carritos');
-      const q = query(coleccion, where("id_carrito", "==", id_carrito));
+      const q = query(coleccion, where("id_usuario", "==", id_usuario));
       const referencia = await (await getDocs(q)).docs[0].ref;
       await deleteDoc(referencia);
       return true;

@@ -11,35 +11,31 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class CarritoComponent implements OnInit {
   public isLogged = false;
-  public user: any=this.auth.getLoggedUser();  
+  public user: any;  
 
   constructor(private conexion: ConectionFireService, private auth: AuthService) { }
 
   carrito: Interface_Carrito={
-    id_carrito: "",
     id_usuario: "",
     productos: [],
     subtotal: 0
   }
   
   ngOnInit(): void {
-    this.carrito={
-      id_carrito: '1234',
-      id_usuario: this.user.uid,
-      productos: [],
-      subtotal: 0
-    }
-    this.conexion.getCarrito(this.carrito.id_carrito).then(data=>{
-      if(data){
-        this.carrito=data;
-      }
-    });
     //verifica si hay sesion activa
     this.auth.getLoggedUser().then(data=>{
       if(data?.email){
       this.user=data;
       this.isLogged=true;
       }
+      //obtiene los productos del carrito
+     this.conexion.getCarrito(this.user.uid).then(data=>{
+      if(data){
+        this.carrito = data;
+        //actualiza el carrito
+        this.actualizaCarrito();
+      }
+      });
     });
   }
 
@@ -48,17 +44,13 @@ export class CarritoComponent implements OnInit {
   }
 
   deleteProducto(producto:Interface_Producto){
-    this.conexion.deleteProducto(this.carrito.id_carrito).then(data=>{
-      if(data){
-        alert("Producto eliminado");
-        this.actualizaCarrito();
-      }
-    });
+    this.carrito.productos = this.carrito.productos.filter((item) => item !== producto);
+    this.conexion.updateCarrito(this.carrito);
+    alert("El siguiente producto se ha eliminado de su carrito: "+producto.nombre);
+    this.actualizaCarrito();
   }
 
   actualizaCarrito(){
-    this.conexion.getProductos().then(data=>{
-      this.carrito.productos=data;
-    });
+    this.conexion.updateCarrito(this.carrito);
   }
 }
