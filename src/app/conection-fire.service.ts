@@ -136,6 +136,13 @@ export class ConectionFireService {
   const productosList = productosSnapshot.docs.map( doc=>doc.data()) as Interface_Producto[];
   return productosList;
   }
+  async getProductosCat(id_categoria:String){
+    const coleccion = collection(this.db, '/productos');
+    const q = query(coleccion, where("id_categoria", "==", id_categoria));
+    const productosSnapshot = await getDocs(q);
+    const productosList = productosSnapshot.docs.map( doc=>doc.data()) as Interface_Producto[];
+    return productosList;
+  }
 
   async getProducto(id_producto:String){
     const coleccion = collection(this.db, '/productos');
