@@ -7,6 +7,7 @@ import { doc,getFirestore, collection, getDocs, addDoc, deleteDoc, query, where,
 import { getStorage, ref } from "firebase/storage";
 import { Interface_Categoria } from './interfaces/int_categoria';
 import { Interface_Producto } from './interfaces/int_pruducto';
+import { Interface_Carrito } from './interfaces/int_carrito';
 
 
 @Injectable({
@@ -186,5 +187,51 @@ export class ConectionFireService {
       return false;
     } 
   } 
+
+  //métodos de carrito
+  async getCarrito(id_carrito:String){
+    const coleccion = collection(this.db, '/carritos');
+    const q = query(coleccion, where("id_carrito", "==", id_carrito));
+    const querySnapshot = await getDocs(q);
+    if(querySnapshot){
+      return <Interface_Carrito>querySnapshot.docs[0].data();
+    }
+    else{
+      return null;
+    }    
+  }
+  async addCarrito( carrito:Interface_Carrito ){
+    try {
+      const docRef = await addDoc(collection(this.db, "carritos"), carrito);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  async updateCarrito(carrito:Interface_Carrito){
+    try{
+      const coleccion = collection(this.db, '/carritos');
+      const q = query(coleccion, where("id_carrito", "==", carrito.id_carrito));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await setDoc(referencia, carrito);
+      return true;
+    }catch(e){
+      return null;
+    }
+  }
+  async deleteCarrito(id_carrito:String){
+    try{
+      const coleccion = collection(this.db, '/carritos');
+      const q = query(coleccion, where("id_carrito", "==", id_carrito));
+      const referencia = await (await getDocs(q)).docs[0].ref;
+      await deleteDoc(referencia);
+      return true;
+    }catch(e){
+      return false;
+    } 
+  } 
+
+
   
 }
