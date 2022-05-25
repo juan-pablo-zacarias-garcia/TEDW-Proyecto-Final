@@ -1,12 +1,52 @@
 <app-navbar [isLogged]="isLogged"></app-navbar>
 <section class="food_section layout_padding-bottom" id="section_food">
-    <div class="heading_container heading_center" style="margin-top: 80px;">
+    <div class="heading_container heading_center text-white" style="margin-top: 80px;">
         <h2>
           Su Carrito tiene...
         </h2>
-      </div>
+    </div>
     <div class="container" style="margin-top: 50px;">
       <div  class="row">
+        <div  class="col-md-12">
+          <div class="box">
+            <div>
+              <div class="img-box text-black">
+                <form>
+                  <div class="form-group row">
+                    <h4 for="staticEmail" class="col-sm-6 ">Métodos de pago</h4>
+                    <div class="col-sm-6">
+                      <select class="form-select" (change)="selectMetodo($event)"  >
+                        <option value = '' selected>Método de pago</option>
+                        <option *ngFor="let metodo of metodos" [attr.value]="metodo.name">{{metodo.name}}</option>
+                      </select>  
+                    </div>                    
+                  </div>
+                </form>
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Subtotal: ${{subtotal}}
+                </h5>
+                <p>
+                  
+                </p>
+                <div class="options">
+                  <h6>
+                    Total: ${{subtotal}}
+                  </h6>
+                  <button class="btn btn-outline-success me-2" (click)="pagar(subtotal)">
+                    <i class="bi bi-wallet"></i>
+                    Pagar
+                  </button>
+                  <div class="form-check">
+                    <input type="checkbox"  class="form-check-input" [(ngModel)]="check">
+                    <label class="form-check-label" for="exampleCheck1">Facturar</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div *ngFor="let producto of carrito.productos | slice:0:8;" class="col-md-4">
           <div class="box">
             <div>
@@ -35,17 +75,4 @@
       </div>
     </div>
  </section>
- <div class="container" style="margin-left: 80%; margin-top: -50px; width: 90px; height: 30px;">
-  <!--<div class="input-group" style="margin-top: 10px;">
-    <input type="number" min="0" class="form-control" id="sale-price" [(ngModel)]='nuevo_producto.costo' name="sale-price" placeholder="Sale-Price" style="margin-left: 15px;">
-    <select id="categoria"  class="form form-select" (change)="selectCategoria($event)">
-        <option value="null">-</option>
-        <option *ngFor="let categoria of categorias" value={{categoria.id_categoria}} >({{categoria.id_categoria}}) {{categoria.nombre}}</option>
-    </select>
-  </div>-->
-  <div id="btns_carrito">
-    <button (click)="procederPago()" type="submit" id="btn_addCarrito" class="btn btn-success m-4">
-      <i class="bi bi-plus" > Pagar</i>
-    </button>
-  </div>
-</div>      
+ 

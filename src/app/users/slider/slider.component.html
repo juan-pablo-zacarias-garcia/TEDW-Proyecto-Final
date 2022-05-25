@@ -1,4 +1,8 @@
   <!-- slider section -->
+  <br>
+  <br>
+  <br>
+  <br>
   <section class="slider_section ">
     <div id="customCarousel1" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
@@ -23,37 +27,17 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item ">
+        <div class="carousel-item " *ngFor="let categoria of categorias">
           <div class="container ">
             <div class="row">
               <div class="col-md-7 col-lg-6 ">
                 <div class="detail-box">
                   <h1>
-                    Fast Food Restaurant
+                    {{categoria.nombre}}
                   </h1>
                   <p>
-                    Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                  </p>
-                  <div class="btn-box">
-                    <a href="" class="btn1">
-                      Order Now
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="container ">
-            <div class="row">
-              <div class="col-md-7 col-lg-6 ">
-                <div class="detail-box">
-                  <h1>
-                    Fast Food Restaurant
-                  </h1>
-                  <p>
-                    Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                    {{categoria.descripcion}}
+                    <img src={{categoria.imagen}}>
                   </p>
                   <div class="btn-box">
                     <a href="" class="btn1">
@@ -69,8 +53,7 @@
       <div class="container">
         <ol class="carousel-indicators">
           <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-          <li data-target="#customCarousel1" data-slide-to="1"></li>
-          <li data-target="#customCarousel1" data-slide-to="2"></li>
+          <li data-target="#customCarousel1" attr.data-slide-to={{indice+1}} *ngFor="let categoria of categorias ;let indice=index"></li>
         </ol>
       </div>
     </div>

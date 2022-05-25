@@ -45,9 +45,11 @@ export class LoginComponent implements OnInit {
         }
       );
 
-
-
-      this.rutas.navigateByUrl('/');
+      if(res?.user?.email=="17030990@itcelaya.edu.mx"){
+        this.rutas.navigateByUrl('/admin');
+      }else{
+        this.rutas.navigateByUrl('/');
+      }
     });
   }
 

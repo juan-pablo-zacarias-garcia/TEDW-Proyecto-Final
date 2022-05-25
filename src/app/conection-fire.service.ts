@@ -450,7 +450,5 @@ async  getmPagos(){
       return false;
     } 
   } 
-
-
   
 }

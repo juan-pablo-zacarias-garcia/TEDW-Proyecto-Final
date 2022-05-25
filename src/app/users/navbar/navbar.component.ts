@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input() isLogged: any;
+  @Input() isLogged: any; 
   public user: any=this.auth.getLoggedUser();  
 
   constructor(private auth: AuthService) { }

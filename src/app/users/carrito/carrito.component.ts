@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConectionFireService } from 'src/app/conection-fire.service';
 import { Interface_Carrito } from 'src/app/interfaces/int_carrito';
+import { Interface_Metodo_Pago } from 'src/app/interfaces/int_metodo_pago';
 import { Interface_Producto } from 'src/app/interfaces/int_pruducto';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -13,13 +15,18 @@ export class CarritoComponent implements OnInit {
   public isLogged = false;
   public user: any;  
 
-  constructor(private conexion: ConectionFireService, private auth: AuthService) { }
+  constructor(private conexion: ConectionFireService, private auth: AuthService, private rutas: Router) { }
 
+  subtotal=0;
+  cantidad_productos=0;
+  metodos: Interface_Metodo_Pago[]=[];
+  metodo:String='No seleccinado';
   carrito: Interface_Carrito={
     id_usuario: "",
     productos: [],
     subtotal: 0
   }
+  check: any="Nada";
   
   ngOnInit(): void {
     //verifica si hay sesion activa
@@ -37,10 +44,23 @@ export class CarritoComponent implements OnInit {
       }
       });
     });
+    this.conexion.getmPagos().then(data=>{
+      if(data){
+        this.metodos = data;
+      }
+    })
   }
 
-  procederPago(){
-    
+  pagar(total: number){
+    alert("Se ha realizado el pago con su cuenta de "+this.metodo+((this.check)?' La factura se enviará al correo '+this.user.email:' no se generó factura'));
+    this.conexion.deleteCarrito(this.user.uid).then(data=>{
+      if(data){
+          this.rutas.navigateByUrl('/#section_food');
+      }
+    });
+  }
+  selectMetodo(metodo: any){
+    this.metodo=(metodo.target.value);
   }
 
   deleteProducto(producto:Interface_Producto){
@@ -52,5 +72,15 @@ export class CarritoComponent implements OnInit {
 
   actualizaCarrito(){
     this.conexion.updateCarrito(this.carrito);
+    this.calcular_subtotal();
   }
+
+  calcular_subtotal(){
+    this.subtotal=0;
+    for(let i=0; i<this.carrito.productos.length; i++){
+      this.subtotal = this.subtotal + <number>this.carrito.productos[i].costo;
+    }
+  }
+
+
 }
